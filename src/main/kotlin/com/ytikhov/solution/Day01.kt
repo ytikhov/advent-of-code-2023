@@ -3,7 +3,7 @@ package com.ytikhov.solution
 import com.ytikhov.util.FileData
 
 class Day01(filename: String) {
-    val digitConvertor = listOf(
+    private val digitConvertor = listOf(
         Pair("one", "1"),
         Pair("two", "2"),
         Pair("three", "3"),
@@ -29,8 +29,8 @@ class Day01(filename: String) {
     fun solvePart2(): Long {
         var result = 0L
         for (line in data) {
-            val forward = convertFirstNumberOccurence(line, digitConvertor)
-            val backward = convertFirstNumberOccurence(line.reversed(), digitConvertor.map { Pair(it.first.reversed(), it.second) })
+            val forward = convertFirstNumberOccurrence(line, digitConvertor)
+            val backward = convertFirstNumberOccurrence(line.reversed(), digitConvertor.map { Pair(it.first.reversed(), it.second) })
             val left = firstDigit(forward)
             val right = firstDigit(backward)
             result += (10 * left + right)
@@ -38,7 +38,7 @@ class Day01(filename: String) {
         return result
     }
 
-    private fun convertFirstNumberOccurence(input: String, convertor: List<Pair<String, String>>): String {
+    private fun convertFirstNumberOccurrence(input: String, convertor: List<Pair<String, String>>): String {
         var pos = 0
         var convertedInput = input
         while (pos < convertedInput.length) {
@@ -54,14 +54,11 @@ class Day01(filename: String) {
     }
 
     private fun firstDigit(string: String): Int {
-        var res = 0
         for (sym in string) {
             if (sym in '0'..'9') {
-                res = sym.digitToInt()
-                break
+                return sym.digitToInt()
             }
         }
-
-        return res
+        return 0
     }
 }
