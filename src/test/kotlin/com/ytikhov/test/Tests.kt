@@ -3,6 +3,7 @@ package com.ytikhov.test
 import com.ytikhov.solution.Day01
 import com.ytikhov.solution.Day02
 import com.ytikhov.solution.Day03
+import com.ytikhov.solution.Day04
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -28,4 +29,10 @@ class Tests {
         Assertions.assertEquals(75741499, day03.solvePart2())
     }
 
+    @Test
+    fun day04Tests() {
+        val day04 = Day04("day04/day4.txt")
+        Assertions.assertEquals(20855, day04.solvePart1())
+        Assertions.assertEquals(5489600, day04.solvePart2())
+    }
 }
